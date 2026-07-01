@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UK Income Tax Comparison — England &amp; Wales vs Scotland</title>
+  <meta name="description" content="Compare take-home pay under rUK and Scottish income tax bands for 2026/27.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <header class="page-header">
+    <p class="eyebrow">UK Income Tax — 2026/27 tax year</p>
+    <h1>Same salary.<br>Different country.<br>Different tax.</h1>
+    <p class="subhead">Scotland sets its own income tax bands. Enter a gross salary and see exactly where the numbers split from the rest of the UK.</p>
+  </header>
+
+  <section class="input-panel" aria-label="Salary input">
+    <label for="income">Gross annual salary</label>
+    <div class="income-field">
+      <span class="currency">£</span>
+      <input type="number" id="income" name="income" value="35000" min="0" max="1000000" step="500" inputmode="numeric">
+    </div>
+    <input type="range" id="income-slider" min="0" max="200000" step="500" value="35000" aria-label="Salary slider">
+    <div class="slider-labels"><span>£0</span><span>£200,000</span></div>
+  </section>
+
+  <section class="ledger" aria-live="polite">
+    <div class="ledger-column" id="col-ruk">
+      <h2 class="region-name">England, Wales &amp; N. Ireland</h2>
+      <p class="region-tag">3 bands — set by HMRC</p>
+      <table class="bands-table" id="table-ruk">
+        <thead>
+          <tr><th>Band</th><th>Rate</th><th>Taxed on</th><th>Tax due</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="totals">
+        <div class="total-row"><span>Personal allowance</span><span class="mono" id="ruk-allowance">—</span></div>
+        <div class="total-row"><span>Total tax</span><span class="mono" id="ruk-tax">—</span></div>
+        <div class="total-row take-home"><span>Take-home pay</span><span class="mono" id="ruk-takehome">—</span></div>
+      </div>
+    </div>
+
+    <div class="border-divider" aria-hidden="true">
+      <div class="border-line"></div>
+      <div class="border-badge" id="border-badge">
+        <span id="badge-amount">—</span>
+        <span id="badge-direction" class="badge-direction">enter a salary</span>
+      </div>
+    </div>
+
+    <div class="ledger-column" id="col-scotland">
+      <h2 class="region-name">Scotland</h2>
+      <p class="region-tag">6 bands — set by Holyrood</p>
+      <table class="bands-table" id="table-scotland">
+        <thead>
+          <tr><th>Band</th><th>Rate</th><th>Taxed on</th><th>Tax due</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="totals">
+        <div class="total-row"><span>Personal allowance</span><span class="mono" id="scotland-allowance">—</span></div>
+        <div class="total-row"><span>Total tax</span><span class="mono" id="scotland-tax">—</span></div>
+        <div class="total-row take-home"><span>Take-home pay</span><span class="mono" id="scotland-takehome">—</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    <p>Figures use published 2026/27 rates and thresholds from gov.uk and gov.scot. Personal Allowance is reduced by £1 for every £2 earned over £100,000, reaching £0 at £125,140. This tool is for illustration only — it doesn't account for National Insurance, student loans, pension contributions, or dividend income, and isn't tax advice.</p>
+    <p class="source-link"><a href="https://github.com/msarimgit/uk-tax-calculator" target="_blank" rel="noopener">Source on GitHub</a> — open source, MIT licensed.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
