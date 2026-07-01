@@ -57,7 +57,7 @@ python3 -m venv venv
 source venv/bin/activate          # Windows: venv\Scripts\activate
 pip install -r requirements-dev.txt
 
-python3 app.py                    # http://localhost:5000
+python3 app.py                    # http://localhost:5001
 ```
 
 ## Running tests
